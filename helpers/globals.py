@@ -3,7 +3,7 @@ from pygame.locals import *
 
 LACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-YELLOW = (238, 255, 65)
+YELLOW = (237, 239, 0)
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720

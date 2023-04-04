@@ -9,13 +9,13 @@ else:
 """ INITIAL SCREEN """
 
 def wait_for_start(surface): # initial screen animation
-    global WINDOW_WIDTH, WINDOW_HEIGHT, FPS_CLOCK, FPS, BASIC_FONT
+    global WINDOW_WIDTH, WINDOW_HEIGHT, FPS_CLOCK, FPS, BASIC_FONT, SMALL_FONT, YELLOW
 
     t_width = 1000
     title_frame = pygame.transform.scale(pygame.image.load("graphics/init-frame.png"), (t_width, WINDOW_HEIGHT))
-    background = pygame.transform.scale(pygame.image.load("graphics/init-bg.png"), (WINDOW_WIDTH, WINDOW_HEIGHT))
-    continue_msg = SMALL_FONT.render("[ press any key to continue ]", True, (237, 239, 0))
-    title = TITLE_FONT.render("MORRA", True, (237, 239, 0))
+    background = pygame.transform.scale(pygame.image.load("graphics/init-bg.jpg"), (WINDOW_WIDTH, WINDOW_HEIGHT))
+    continue_msg = SMALL_FONT.render("[ press any key to continue ]", True, YELLOW)
+    title = TITLE_FONT.render("MORRA", True, YELLOW)
     tagline_strings = {300: "A", 350: "Different", 400: "Kind", 450: "of", 500: "Binary", 550: ">>>  "}
 
     for i in range(26):  # frame move in from left
@@ -34,13 +34,13 @@ def wait_for_start(surface): # initial screen animation
     i = 0
     tag_y = 300
     while True:  # Text spelled out
-        tagline = TITLE_FONT.render(tagline_strings[tag_y][:i], True, (237, 239, 0))
+        tagline = TITLE_FONT.render(tagline_strings[tag_y][:i], True, YELLOW)
         surface.blit(background, (0, 0))
         surface.blit(title_frame, (WINDOW_WIDTH - t_width, 0))
         surface.blit(title, (940, 170))
         surface.blit(tagline, (940, tag_y))
         for lines in range(line_i):  # retrospective printing previous lines
-            tagline = TITLE_FONT.render(tagline_strings[300 + 50*lines], True, (237, 239, 0))
+            tagline = TITLE_FONT.render(tagline_strings[300 + 50*lines], True, YELLOW)
             surface.blit(tagline, (940, 300 + 50*lines))
 
         i += 1
@@ -64,7 +64,7 @@ def wait_for_start(surface): # initial screen animation
                 surface.blit(background, (0, 0))
                 surface.blit(title, (940, 170))
                 for lines in range(6):  # retrospective printing previous lines
-                    tagline = TITLE_FONT.render(tagline_strings[300 + 50*lines], True, (237, 239, 0))
+                    tagline = TITLE_FONT.render(tagline_strings[300 + 50*lines], True, YELLOW)
                     surface.blit(tagline, (940, 300 + 50*lines))
 
                 surface.blit(title_frame, (WINDOW_WIDTH - 1000, 0))
