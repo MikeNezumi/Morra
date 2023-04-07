@@ -14,5 +14,8 @@ pygame.init()
 FPS_CLOCK = pygame.time.Clock()
 BASIC_FONT = pygame.font.Font('graphics/d-dine.otf', BASIC_FONT_SIZE)
 SMALL_FONT = pygame.font.Font('graphics/d-dine.otf', 16)
+MID_FONT = pygame.font.Font('graphics/d-dine.otf', 25)
 TITLE_FONT = pygame.font.Font('graphics/d-dine.otf', 50)
+FONTS = [SMALL_FONT, MID_FONT, TITLE_FONT]
+
 DISPLAY_SURFACE = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
