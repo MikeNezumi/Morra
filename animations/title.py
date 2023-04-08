@@ -2,7 +2,7 @@ import sys, random, pygame
 from pygame.locals import *
 if "." in __name__:  # filed is called by a script outside of 'helpers' folder
     from helpers.globals import *
-    from helpers.window import terminate, check_for_quit, loop_footer
+    from helpers.window import loop_footer
 else:
     pass
 
@@ -12,9 +12,9 @@ def wait_for_start(surface): # initial screen animation
     global WINDOW_WIDTH, WINDOW_HEIGHT, FPS_CLOCK, FPS, FONTS, YELLOW
 
     t_width = 1000
-    background = pygame.transform.scale(pygame.image.load("graphics/title/init-bg.jpg"), (WINDOW_WIDTH, WINDOW_HEIGHT))
-    title_frame = pygame.transform.scale(pygame.image.load("graphics/title/init-frame.png"), (t_width, WINDOW_HEIGHT))
-    title_backlight = pygame.transform.scale(pygame.image.load("graphics/title/init-backlight.png"), (1200, WINDOW_HEIGHT))
+    background = pygame.transform.smoothscale(pygame.image.load("graphics/title/init-bg.jpg"), (WINDOW_WIDTH, WINDOW_HEIGHT))
+    title_frame = pygame.transform.smoothscale(pygame.image.load("graphics/title/init-frame.png"), (t_width, WINDOW_HEIGHT))
+    title_backlight = pygame.transform.smoothscale(pygame.image.load("graphics/title/init-backlight.png"), (1200, WINDOW_HEIGHT))
     title_backlight.set_alpha(120)
     continue_msg = SMALL_FONT.render("[ press any key to continue ]", True, YELLOW)
     title = TITLE_FONT.render("MORRA", True, YELLOW)
@@ -43,7 +43,7 @@ def wait_for_start(surface): # initial screen animation
         surface.blit(background, (0, 0))
         surface.blit(title_backlight, (WINDOW_WIDTH - t_width, 0))
         surface.blit(title_frame, (WINDOW_WIDTH - t_width, 0))
-        surface.blit(title, (940, 170))
+        surface.blit(title, (940, 175))
         loop_footer()
 
     line_i = 0
@@ -53,7 +53,7 @@ def wait_for_start(surface): # initial screen animation
         surface.blit(background, (0, 0))
         surface.blit(title_backlight, (WINDOW_WIDTH - t_width, 0))
         surface.blit(title_frame, (WINDOW_WIDTH - t_width, 0))
-        surface.blit(title, (940, 170))
+        surface.blit(title, (940, 175))
         surface.blit(tagline, (940, tag_y))
         for lines in range(line_i):  # retrospective printing previous lines
             tagline = MID_FONT.render(tagline_strings[tag0_y + line_height*lines], True, YELLOW)
@@ -69,7 +69,7 @@ def wait_for_start(surface): # initial screen animation
         loop_footer()
 
     # continue message flicking
-    surface.blit(title, (940, 170))
+    surface.blit(title, (940, 175))
     done = False
     pygame.time.wait(500)
     while not done:
@@ -79,7 +79,7 @@ def wait_for_start(surface): # initial screen animation
             elif i == 15:
                 surface.blit(background, (0, 0))
                 surface.blit(title_backlight, (WINDOW_WIDTH - t_width, 0))
-                surface.blit(title, (940, 170))
+                surface.blit(title, (940, 175))
                 random_nums = [(str(random.randint(1, 2))) for _ in range(8)]
                 tagline_strings[tag0_y + 5 * line_height] = ">>> " + " ".join(random_nums) + "   "  # space to prevent overlapping render time
                 for lines in range(6):  # retrospective printing previous lines
