@@ -11,7 +11,7 @@ def main():
     wait_for_start(DISPLAY_SURFACE)                 # slide 1
     char_fade(DISPLAY_SURFACE)                      # slide 2 - animation
     GAME_STATE["even_mode"] = char_pick(DISPLAY_SURFACE) # slide 2 - choice
-    char_chosen(DISPLAY_SURFACE)                    # slide 2 - chosen animation
+    char_chosen(DISPLAY_SURFACE)                     # slide 2 - chosen animation
     check_for_quit()
 
 if __name__ == '__main__':

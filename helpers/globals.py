@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from array import array
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -22,5 +23,6 @@ FONTS = [SMALL_FONT, MID_FONT, TITLE_FONT]
 DISPLAY_SURFACE = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 GAME_STATE = {
-    "even_mode": None
+    "even_mode": None,
+    "score": None  # array()
 }
