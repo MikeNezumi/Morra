@@ -1,6 +1,6 @@
 import sys, random, math, pygame
 from pygame.locals import *
-if "." in __name__:  # filed is called by a script outside of 'helpers' folder
+if "." in __name__:  # filed is called by a script outside of 'animations' folder
     from helpers.globals import *
     from helpers.window import loop_footer
     from helpers.misc import backlit_rect
@@ -121,8 +121,5 @@ def char_chosen(surface):
         surface.blit(background, (0, 0))
         surface.blit(avatars[even], (i * 10 - 100, 320)) # left_x = 40
         surface.blit(avatars[not even], (WINDOW_WIDTH - 40 - i * 10, 320))  # right_x = 1240
-        loop_footer()
-    
-    while True:
         loop_footer()
         
