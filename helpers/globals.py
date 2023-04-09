@@ -26,8 +26,10 @@ DISPLAY_SURFACE = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 GAME_STATE = {
     "even_mode": None,
     "round": 1,
+    "even_round": None,
     "target": None,
     "picked": None,
     "ai_picked": None,
-    "score": None  # array()
+    "score": 0,
+    "ai_score": 0
 }

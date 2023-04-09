@@ -87,7 +87,7 @@ def wait_for_start(surface): # initial screen animation
                     surface.blit(tagline, (940, tag0_y + line_height*lines))
 
                 surface.blit(title_frame, (WINDOW_WIDTH - t_width, 0))
-            for event in pygame.event.get(pygame.KEYUP) + pygame.event.get(pygame.MOUSEBUTTONUP):
+            for _ in pygame.event.get(pygame.KEYUP) + pygame.event.get(pygame.MOUSEBUTTONUP):
                 done = True
                 break
             loop_footer()
