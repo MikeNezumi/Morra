@@ -120,6 +120,6 @@ def char_chosen(surface):
     for i in range(FPS // 2):
         surface.blit(background, (0, 0))
         surface.blit(avatars[even], (i * 10 - 100, 320)) # left_x = 40
-        surface.blit(avatars[not even], (WINDOW_WIDTH - 40 - i * 10, 320))  # right_x = 1240
+        surface.blit(avatars[not even], (WINDOW_WIDTH - 40 - i * 10, 320))  # right_x = 1100
         loop_footer()
         

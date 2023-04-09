@@ -18,11 +18,16 @@ BASIC_FONT = pygame.font.Font('graphics/d-dine.otf', BASIC_FONT_SIZE)
 SMALL_FONT = pygame.font.Font('graphics/d-dine.otf', 16)
 MID_FONT = pygame.font.Font('graphics/d-dine.otf', 25)
 TITLE_FONT = pygame.font.Font('graphics/d-dine.otf', 45)
-FONTS = [SMALL_FONT, MID_FONT, TITLE_FONT]
+MEGA_FONT = pygame.font.Font('graphics/d-dine.otf', 70)
+FONTS = [SMALL_FONT, MID_FONT, TITLE_FONT, MEGA_FONT]
 
 DISPLAY_SURFACE = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 GAME_STATE = {
     "even_mode": None,
+    "round": 1,
+    "target": None,
+    "picked": None,
+    "ai_picked": None,
     "score": None  # array()
 }
