@@ -82,7 +82,7 @@ def numbers_load(surface):
         loop_footer()
 
     GAME_STATE["target"] = random.randint(1, 10)
-    GAME_STATE["ai_picked"] = random.randint(1, 10)
+    GAME_STATE["ai_picked"].append(random.randint(1, 10))
     for i in range(8):  # number selection load
         num = chr(random.randint(33, 65)) if i < (8 - 1) else "?"
         keys_drop(surface, static = True)
@@ -94,18 +94,18 @@ def numbers_load(surface):
     let_keys = [pygame.K_q, pygame.K_w, pygame.K_e, pygame.K_r, pygame.K_t,
                  pygame.K_y, pygame.K_u, pygame.K_i, pygame.K_o, pygame.K_p]
     letters = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P']
-    GAME_STATE["picked"] = None
-    while GAME_STATE["picked"] == None:  # waiting for player choice 1 - 10
+    GAME_STATE["picked"].append(0)
+    while GAME_STATE["picked"][-1] == 0:  # waiting for player choice 1 - 10
         for i in range(10):
             if pygame.key.get_pressed()[num_keys[i]] \
             or pygame.key.get_pressed()[let_keys[i]]:
-                GAME_STATE["picked"] = i + 1
+                GAME_STATE["picked"][-1] = (i + 1)
                 break
             
             for key_row in keys:
                 if key_row[i].collidepoint(pygame.mouse.get_pos())  \
                 and len(pygame.event.get(pygame.MOUSEBUTTONUP)) > 0:
-                    GAME_STATE["picked"] = i + 1
+                    GAME_STATE["picked"][-1] = (i + 1)
                     break
         
         loop_footer()
@@ -113,12 +113,12 @@ def numbers_load(surface):
     # Flash chosen key to signal number
     side, margin = 70, 20
     left_margin = (WINDOW_WIDTH - len(keys[0]) * (side + margin)) // 2
-    num_xy = (left_margin + (side + margin) * (GAME_STATE["picked"] - 1), 125)
-    let_xy = (left_margin + (side + margin) * (GAME_STATE["picked"] - 1), 125 + (side + margin))
+    num_xy = (left_margin + (side + margin) * (GAME_STATE["picked"][-1] - 1), 125)
+    let_xy = (left_margin + (side + margin) * (GAME_STATE["picked"][-1] - 1), 125 + (side + margin))
     for i in range(10):
         if 2 < i < 9:  # draws a 1-key 'keyboard' over scene to simulate click
-            keyboard(surface, [[str(GAME_STATE["picked"])]], num_xy, side, margin, chamfer = 10)
-            keyboard(surface, [[letters[GAME_STATE["picked"] - 1]]], let_xy, side, margin, chamfer = 10)
+            keyboard(surface, [[str(GAME_STATE["picked"][-1])]], num_xy, side, margin, chamfer = 10)
+            keyboard(surface, [[letters[GAME_STATE["picked"][-1] - 1]]], let_xy, side, margin, chamfer = 10)
         elif i == 9:
             keys_drop(surface, static = True)
             num_frame(surface, num)

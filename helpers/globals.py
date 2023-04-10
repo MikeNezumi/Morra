@@ -23,13 +23,20 @@ FONTS = [SMALL_FONT, MID_FONT, TITLE_FONT, MEGA_FONT]
 
 DISPLAY_SURFACE = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
-GAME_STATE = {
-    "even_mode": None,
+NEW_GAME = {
+    "even_mode": True,
     "round": 1,
     "even_round": None,
     "target": None,
-    "picked": None,
-    "ai_picked": None,
+    "picked": array('i', []),     # a little silly, but arrays are 
+    "ai_picked": array('i', []),  # mandated by the assignment
     "score": 0,
-    "ai_score": 0
+    "ai_score": 0,
+    "player_rounds": 0,
+    "ai_rounds": 0,
+    "winner": "You",
+    "winner_char": "Eavan"
 }
+
+GAME_STATE = {}
+GAME_STATE = NEW_GAME.copy()

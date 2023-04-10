@@ -106,7 +106,7 @@ def player_frame(surface, topleft, player = True):  # stop_xy -> topleft corner
     tags = {True: "Eavan", False: "Odhran"}
     tag = tags[GAME_STATE["even_mode"]] if player else tags[not GAME_STATE["even_mode"]]
     tag_rendered = TITLE_FONT.render(tag, True, YELLOW)
-    num_rendered = MEGA_FONT.render(str(GAME_STATE[points[player]]), True, YELLOW)
+    num_rendered = MEGA_FONT.render(str(GAME_STATE[points[player]][-1]), True, YELLOW)
     points_rendered = MID_FONT.render(str(GAME_STATE[is_player[player]]) + " points", True, YELLOW)
     tag_x = 40 if tag == "Eavan" else 30
     num_x = width // 2 - 10 if GAME_STATE[points[player]] != 10 else width // 2 - 20
