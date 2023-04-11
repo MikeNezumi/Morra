@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from pygame import mixer
 from helpers.globals import *
 from helpers.window import check_for_quit
 from helpers.process import evaluate, save_winners, reset_round
@@ -10,6 +11,9 @@ from animations.results import round_results, play_again, overall_results
 
 # Todo: inplement properly
 def main():
+    mixer.init()
+    mixer.music.load("music/mysterytheme2.ogg")
+    mixer.music.play(-1)
     global DISPLAY_SURFACE, GAME_STATE, NEW_GAME, GAMES
 
     wait_for_start(DISPLAY_SURFACE)         # slide 1 
