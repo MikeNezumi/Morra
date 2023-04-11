@@ -40,3 +40,4 @@ NEW_GAME = {
 
 GAME_STATE = {}
 GAME_STATE = NEW_GAME.copy()
+GAMES = []

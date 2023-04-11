@@ -79,8 +79,9 @@ def round_results(surface, static = False):
             loop_footer()
 
 def play_again(surface):  # play again? returns True / False
-    global FONTS, YELLOW, BLACK_A
+    global FONTS, YELLOW, BLACK_A, GAME_STATE, GAMES
 
+    GAMES.append(GAME_STATE.copy())
     chamfer = 10
     (width, height) = (320, 70)
     (lx, ly) = (220, 560)
