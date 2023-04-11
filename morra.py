@@ -1,19 +1,18 @@
-import sys, math, random, pygame
+import pygame
 from pygame.locals import *
 from helpers.globals import *
-from helpers.window import check_for_quit, loop_footer
+from helpers.window import check_for_quit
 from helpers.process import evaluate, save_winners, reset_round
 from animations.title import wait_for_start
 from animations.char_pick import char_fade, char_pick, char_chosen
 from animations.round import numbers_load, round_result
 from animations.results import round_results, play_again, overall_results
 
-
 # Todo: inplement properly
 def main():
     global DISPLAY_SURFACE, GAME_STATE, NEW_GAME, GAMES
-    wait_for_start(DISPLAY_SURFACE)         # slide 1
-    
+
+    wait_for_start(DISPLAY_SURFACE)         # slide 1 
     round_over = False
     game_over = False
     while not game_over:  # a game
@@ -35,10 +34,8 @@ def main():
         # game over? - choice:
         game_over = not play_again(DISPLAY_SURFACE)
         round_over = False
-
-    for line in GAMES:
-        print(line)
-
+    
+    overall_results(DISPLAY_SURFACE)        # slide 6 XDD
     check_for_quit()
 
 if __name__ == '__main__':

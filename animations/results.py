@@ -137,6 +137,69 @@ def play_again(surface):  # play again? returns True / False
         
         loop_footer()
 
+""" Game's closing screen, displays formatted history from GAMES list of dicts, waits for final click """
+def overall_results(surface):
+    global GAMES, YELLOW, FONTS, FPS, WINDOW_WIDTH, WINDOW_HEIGHT, BLACK_A
 
-def overall_results():
-    pass
+    console_lines = []
+    for game_i in range(len(GAMES)):  # process each game dict into a string
+        r = GAMES[game_i]
+        player_even = len(list(filter(lambda x: (x % 2 == 0) , r["picked"])))
+        player_odd = len(r["picked"]) - player_even
+        ai_even = len(list(filter(lambda x: (x % 2 == 0) , r["ai_picked"])))
+        ai_odd = len(r["ai_picked"]) - player_even
+        winner = r["winner"] if r["winner"] == "You" else "CPU"
+
+        s = ">>> #{}: {} ({}) WON - ROUNDS: {} won | {} lost".format(
+            (game_i + 1), winner, r["winner_char"], r["player_rounds"], r["ai_rounds"]
+        )
+        s = s + " --- PICKED: {} even | {} odd --- AI PICKED: {} even | {} odd".format(
+            player_even, player_odd, ai_even, ai_odd
+        )
+        s = s + " --- EXTRA POINTS: {} you | {} ai".format(
+            r["extra"], r["ai_extra"]
+        )
+        console_lines.append(SMALL_FONT.render(s, True, YELLOW))
+
+    background = pygame.transform.smoothscale(pygame.image.load("graphics/results/results-bg.png"), (WINDOW_WIDTH, WINDOW_HEIGHT))
+    continue_msg = SMALL_FONT.render("[ press any key to close the game ]", True, YELLOW)
+    for i in range(FPS + 1):
+        full_rect = [[5, 5], [WINDOW_WIDTH - 5, 5], [WINDOW_WIDTH - 5, WINDOW_HEIGHT - 5], [5, WINDOW_HEIGHT - 5]]
+        for xy in full_rect:
+            xy[1] += round(WINDOW_HEIGHT + 90 - ((WINDOW_HEIGHT + 90) / FPS) * i, 0)
+
+        surface.blit(background, (0, 0))
+        backlit_rect(surface, full_rect, BLACK_A)
+        pygame.draw.polygon(surface, YELLOW, full_rect, 10)
+        loop_footer()
+    
+    surface.blit(background, (0, 0))
+    backlit_rect(surface, full_rect, BLACK_A)
+    pygame.draw.polygon(surface, YELLOW, full_rect, 10)
+    for i in range(len(console_lines)):
+        surface.blit(console_lines[i], (160, 50 + i * 30))
+        for _ in range(3):  # 3x as slower as FPS
+            loop_footer()
+    
+    while True:
+        for i in range(30):
+            if i == 0:
+                surface.blit(continue_msg, (WINDOW_WIDTH // 2 - 130, 550))
+            elif i == 15:
+                surface.blit(background, (0, 0))
+                backlit_rect(surface, full_rect, BLACK_A)
+                pygame.draw.polygon(surface, YELLOW, full_rect, 10)
+                
+                random_nums = [(str(random.randint(1, 2))) for _ in range(8)]
+                num_line = " ".join(random_nums) + "   "  # space to prevent overlapping render time
+                for i in range(len(console_lines)):  # retrospective printing previous lines
+                    surface.blit(console_lines[i], (160, 50 + i * 30))
+                
+                surface.blit(SMALL_FONT.render(num_line, True, YELLOW), (940, 600))
+
+
+            for _ in pygame.event.get(pygame.KEYUP) + pygame.event.get(pygame.MOUSEBUTTONUP):
+                return # terminates game
+            
+            loop_footer()
+

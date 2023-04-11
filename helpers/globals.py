@@ -26,7 +26,7 @@ DISPLAY_SURFACE = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 NEW_GAME = {
     "even_mode": True,
     "round": 1,
-    "even_round": None,
+    "even_round": None,  
     "target": None,
     "picked": array('i', []),     # a little silly, but arrays are 
     "ai_picked": array('i', []),  # mandated by the assignment
@@ -35,7 +35,9 @@ NEW_GAME = {
     "player_rounds": 0,
     "ai_rounds": 0,
     "winner": "You",
-    "winner_char": "Eavan"
+    "winner_char": "Eavan",
+    "extra": 0,
+    "ai_extra": 0
 }
 
 GAME_STATE = {}

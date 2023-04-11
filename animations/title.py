@@ -10,6 +10,8 @@ else:
 
 def wait_for_start(surface): # initial screen animation
     global WINDOW_WIDTH, WINDOW_HEIGHT, FPS_CLOCK, FPS, FONTS, YELLOW
+    pygame.display.set_icon(pygame.image.load('graphics/favicon.jpg'))
+    pygame.display.set_caption('Morra')
 
     t_width = 1000
     background = pygame.transform.smoothscale(pygame.image.load("graphics/title/init-bg.jpg"), (WINDOW_WIDTH, WINDOW_HEIGHT))

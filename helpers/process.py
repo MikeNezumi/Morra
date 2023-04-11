@@ -21,8 +21,10 @@ def evaluate():  # does GAME_STATE accounting, returns True if game finished, Fa
     ai_delta = abs(GAME_STATE["ai_picked"][-1] - GAME_STATE["target"])
     if player_delta < ai_delta:
         GAME_STATE["score"] += 1
+        GAME_STATE["extra"] += 1
     elif player_delta > ai_delta:
         GAME_STATE["ai_score"] += 1
+        GAME_STATE["ai_extra"] += 1
 
     return GAME_STATE["score"] >= 6 or GAME_STATE["ai_score"] >= 6
 
