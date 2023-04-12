@@ -1,4 +1,4 @@
-import sys, pygame
+import sys, random, pygame
 from pygame.locals import *
 if "." in __name__:  # filed is called by a script outside of 'helpers' folder
     from .globals import *
@@ -23,3 +23,11 @@ def loop_footer(): # belongs at the end of most game loops
     check_for_quit()
     pygame.event.clear()
     FPS_CLOCK.tick(FPS)
+
+
+def music():
+    track = random.randint(1, 3)
+    pygame.mixer.init()
+    pygame.mixer.music.load("music/mysterytheme{}.ogg".format(track))
+    pygame.mixer.music.set_volume(0.2)
+    pygame.mixer.music.play(-1)

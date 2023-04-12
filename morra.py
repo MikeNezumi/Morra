@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from pygame import mixer
 from helpers.globals import *
-from helpers.window import check_for_quit
+from helpers.window import check_for_quit, music
 from helpers.process import evaluate, save_winners, reset_round
 from animations.title import wait_for_start
 from animations.char_pick import char_fade, char_pick, char_chosen
@@ -11,11 +11,9 @@ from animations.results import round_results, play_again, overall_results
 
 # Todo: inplement properly
 def main():
-    mixer.init()
-    mixer.music.load("music/mysterytheme2.ogg")
-    mixer.music.play(-1)
     global DISPLAY_SURFACE, GAME_STATE, NEW_GAME, GAMES
 
+    music()  # plays a random one or 3 songs
     wait_for_start(DISPLAY_SURFACE)         # slide 1 
     round_over = False
     game_over = False
